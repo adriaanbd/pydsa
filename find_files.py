@@ -29,6 +29,29 @@ def find_files(suffix: str, path: str, dirs=False) -> list:
 
 
 if __name__ == '__main__':
-    path = './testdir'
-    suffix = '.c'
-    print(find_files(suffix, path))
+    # Tests
+    def test_return_files(suffix, path, expected_count):
+        print(f'\nFinding all files in path: "{path}" with suffix: "{suffix}"')
+        print(len(find_files(suffix, path)) == expected_count)
+
+
+    def test_arg_types(suffix, path, message):
+        print(f'\n{message}')
+        try:
+            find_files(suffix, path)
+        except AssertionError as error:
+            assert isinstance(error, AssertionError)
+            print(True)
+        else:
+            print(False)
+
+    # Run tests
+    test_return_files('.c', './testdir', 4)
+    test_return_files('.gitkeep', './testdir', 2)
+    test_return_files('.h', './testdir', 4)
+    test_return_files('', './testdir', 10)
+    test_return_files('.py', './testdir', 0)
+    test_arg_types(None, './testdir', '"None" as suffix raises AssertionError')
+    test_arg_types(1, './testdir', 'An "int" as suffix raises AssertionError')
+    test_arg_types('', None, '"None" as path raises AssertionError')
+    test_arg_types('', 1, 'An "int" as path raises AssertionError')
