@@ -53,3 +53,12 @@ The tests are currently minimal and in the main script. I'd like to add more tes
 ## How to Contribute
 
 If you'd like to add any feature to this script feel free to clone this repository and submit a PR with your suggested changes. I'd be happy to discuss.
+
+## Sources
+
+1. PEP 0428 [here](https://www.python.org/dev/peps/pep-0428/#directory-walking)
+2. Pathlib's docs 1 [here](https://docs.python.org/3/library/pathlib.html)
+3. Pathlib's docs 2 [here](https://pathlib.readthedocs.io/en/pep428/)
+4. Pathlib's source code [here](https://bitbucket.org/pitrou/pathlib/src/default/pathlib.py)
+5. `Path.rglob` [here](https://bitbucket.org/pitrou/pathlib/src/1f9672002e3a5e54c48dd48912cc6d45f8a2137d/pathlib.py#lines-1218)
+6. Pathlib's `WildCardSelector` [here](https://bitbucket.org/pitrou/pathlib/src/1f9672002e3a5e54c48dd48912cc6d45f8a2137d/pathlib.py#lines-638)
