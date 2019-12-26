@@ -7,7 +7,7 @@ class Block:
     def __init__(self, data):
         self.data = data
         self.height = -1
-        self.timestamp = datetime.utcnow().__str__()
+        self.timestamp = str(datetime.utcnow())
         self.prev_hash = None
         self.hash = None
 
@@ -72,7 +72,8 @@ class Chain:
         block = Block(data)
         block.height = len(self.chain)
         if len(self.chain) > 0:
-            prev_block = self.chain[len(self.chain) - 1]
+            prev_idx = len(self.chain) - 1
+            prev_block = self.get_block_by_height(prev_idx)
             block.prev_hash = prev_block.hash
         block.hash = block.calc_hash()
         return block
