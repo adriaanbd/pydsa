@@ -28,7 +28,6 @@ if __name__ == '__main__':
         print(f'\nFinding all files in path: "{path}" with suffix: "{suffix}"')
         print(len(find_files(suffix, path)) == expected_count)
 
-
     def test_assertion(suffix, path, message):
         print(f'\n{message}')
         try:
@@ -50,4 +49,6 @@ if __name__ == '__main__':
     test_assertion(1, './testdir', 'An "int" as suffix raises AssertionError')
     test_assertion('', None, '"None" as path raises AssertionError')
     test_assertion('', 1, 'An "int" as path raises AssertionError')
-    test_assertion('.c', './inexistent', 'A path that is not a directory raises AssertionError')
+    test_assertion(
+        '.c', './inexistent', 'A path that is not a directory raises \
+        AssertionError')
