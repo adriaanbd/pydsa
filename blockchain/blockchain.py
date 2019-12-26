@@ -29,10 +29,15 @@ class Block:
 
     def calc_hash(self):
         sha = sha256()
-        bytes_str = self.block_data().encode('utf-8')
-        sha.update(bytes_str)
+        enc_type = 'utf-8'
+        sha.update(self.data.encode(enc_type))
+        sha.update(self.timestamp.encode(enc_type))
+        sha.update(str(self.height).encode(enc_type))
+        if self.prev_hash:
+            sha.update(self.prev_hash.encode(enc_type))
         return sha.hexdigest()
 
+    @property
     def block_data(self):
         block_data = {
             'data': self.data,
@@ -41,13 +46,16 @@ class Block:
             'prev_hash': self.prev_hash,
             'hash': self.hash
             }
-        return json.dumps(block_data)
+        return block_data
+
+    def as_json(self):
+        return json.dumps(self.block_data)
 
     def __repr__(self):
-        return self.block_data()
+        return str(self.block_data)
 
     def __str__(self):
-        return self.block_data()
+        return str(self.block_data)
 
 
 class Chain:
@@ -67,6 +75,18 @@ class Chain:
             prev_block = self.chain[len(self.chain) - 1]
             block.prev_hash = prev_block.hash
         block.hash = block.calc_hash()
+        return block
+
+    def get_block_by_height(self, height):
+        assert isinstance(height, int), 'Height must be an integer'
+        assert 0 <= height < len(self.chain), 'Height is invalid'
+        return self.chain[height]
+
+    def get_block_by_hash(self, hash_str):
+        assert isinstance(hash_str, str), 'Hash must be a string'
+        for block in self.chain:
+            if block.hash == hash_str:
+                return block
 
     def validate_chain(self):
         errors = []
