@@ -11,4 +11,4 @@ This is a basic blockchain implementation using a Block class and a Chain class.
 
 ## Space Complexity
 
-It is linear `O(n)` as the size of the chain grows in proportion to the number of blocks added to the chain.
+The space complexity of the chain is linear `O(n)` as the size of the chain grows in proportion to the number of blocks added to the chain.
