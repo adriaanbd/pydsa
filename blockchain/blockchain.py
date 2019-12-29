@@ -20,14 +20,14 @@ class Block:
         bytes_str = data.encode('utf-8')
         self._data = bytes_str.hex()
 
-    def validate_block(self):
+    def validate_block(self) -> bool:
         aux_hash = self.hash
         self.hash = None
         is_valid = self.calc_hash() == aux_hash
         self.hash = aux_hash
         return is_valid
 
-    def calc_hash(self):
+    def calc_hash(self) -> str:
         sha = sha256()
         enc_type = 'utf-8'
         sha.update(self.data.encode(enc_type))
@@ -38,7 +38,7 @@ class Block:
         return sha.hexdigest()
 
     @property
-    def block_data(self):
+    def block_data(self) -> dict:
         block_data = {
             'data': self.data,
             'height': self.height,
@@ -62,13 +62,13 @@ class Chain:
     def __init__(self):
         self.chain = []
 
-    def add_block(self, data):
+    def add_block(self, data: str):
         assert isinstance(data, str), 'Data must be a string'
         assert len(data) > 0, 'Cannot create Block with empty data'
         block = self._create_block(data)
         self.chain.append(block)
 
-    def _create_block(self, data):
+    def _create_block(self, data) -> Block:
         block = Block(data)
         block.height = len(self.chain)
         if len(self.chain) > 0:
@@ -78,18 +78,18 @@ class Chain:
         block.hash = block.calc_hash()
         return block
 
-    def get_block_by_height(self, height):
+    def get_block_by_height(self, height: int) -> Block:
         assert isinstance(height, int), 'Height must be an integer'
         assert 0 <= height < len(self.chain), 'Height is invalid'
         return self.chain[height]
 
-    def get_block_by_hash(self, hash_str):
+    def get_block_by_hash(self, hash_str: str) -> Block:
         assert isinstance(hash_str, str), 'Hash must be a string'
         for block in self.chain:
             if block.hash == hash_str:
                 return block
 
-    def validate_chain(self):
+    def validate_chain(self) -> list:
         errors = []
         for height, block in enumerate(self.chain):
             if not block.validate_block():

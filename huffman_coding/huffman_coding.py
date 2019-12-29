@@ -36,13 +36,13 @@ class HuffmanCoding:
         self.codes = dict()
         self.data = data
 
-    def compress(self):
+    def compress(self) -> str:
         self.set_frequencies()
         self.build_tree()
         encoded_mssg = self.encode()
         return encoded_mssg
 
-    def set_frequencies(self):
+    def set_frequencies(self) -> None:
         frequencies = dict()
         for char in self.data:
             node = frequencies.get(char)
@@ -53,7 +53,7 @@ class HuffmanCoding:
                 frequencies[char] = node
                 self.queue.put(node)
 
-    def build_tree(self):
+    def build_tree(self) -> None:
         if self.queue.qsize() == 1:
             fake_node = Node(freq=0, char='')
             self.queue.put(fake_node)
@@ -64,14 +64,14 @@ class HuffmanCoding:
             self.queue.put(parent)
         self.root = self.queue.queue[0]
 
-    def encode(self):
+    def encode(self) -> str:
         self.set_binary_codes(self.root)
         message = ''
         for char in self.data:
             message += self.codes[char]
         return message
 
-    def set_binary_codes(self, root, bit: str = None):
+    def set_binary_codes(self, root, bit: str = None) -> None:
         if bit is None:
             bit = ''
 
@@ -95,14 +95,14 @@ def run_assertions(data: str, operation: str, tree: Node = None):
         assert '0' in uniques or '1' in uniques, 'Only 0s and 1s allowed'
 
 
-def huffman_encoding(data: str):
+def huffman_encoding(data: str) -> tuple:
     run_assertions(data, 'encode')
     tree = HuffmanCoding(data)
     message = tree.compress()
     return message, tree.root
 
 
-def huffman_decoding(data: str, tree: Node):
+def huffman_decoding(data: str, tree: Node) -> str:
     run_assertions(data, 'decode', tree)
     current = tree
     message = ''
