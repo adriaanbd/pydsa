@@ -30,7 +30,7 @@ class Node:
 
 
 class HuffmanCoding:
-    def __init__(self, data):
+    def __init__(self, data: str):
         self.root = None
         self.queue = PriorityQueue()
         self.codes = dict()
@@ -71,7 +71,7 @@ class HuffmanCoding:
             message += self.codes[char]
         return message
 
-    def set_binary_codes(self, root, bit=None):
+    def set_binary_codes(self, root, bit: str = None):
         if bit is None:
             bit = ''
 
@@ -83,20 +83,27 @@ class HuffmanCoding:
         self.set_binary_codes(root.right, bit + '1')
 
 
-def run_assertions(data):
-    assert isinstance(data, str), 'Data must be a string'
-    assert len(data) > 0, 'There is nothing to encode'
+def run_assertions(data: str, operation: str, tree: Node = None):
+    if 'encode' == operation:
+        assert isinstance(data, str), 'Data must be a string'
+        assert len(data) > 0, 'There is nothing to encode'
+    elif 'decode' == operation:
+        assert isinstance(tree, Node), 'Tree must be an instance of Node'
+        assert isinstance(data, str), 'Data to decode must be a string'
+        uniques = set(data)
+        assert len(uniques) <= 2, 'Only binary data allowed'
+        assert '0' in uniques or '1' in uniques, 'Only 0s and 1s allowed'
 
 
-def huffman_encoding(data):
-    run_assertions(data)
+def huffman_encoding(data: str):
+    run_assertions(data, 'encode')
     tree = HuffmanCoding(data)
     message = tree.compress()
     return message, tree.root
 
 
-def huffman_decoding(data, tree):
-    # TODO: implement recursive solution
+def huffman_decoding(data: str, tree: Node):
+    run_assertions(data, 'decode', tree)
     current = tree
     message = ''
 
@@ -158,8 +165,21 @@ if __name__ == "__main__":
         assert decoded_data == data, 'Decoded data does not match original'
         print('TEST PASSED!\n')
 
-    def test_invalid_data_as_input(data):
-        print('Testing that AssertionError is raised with invalid input')
+    def test_invalid_data_to_encode(data):
+        print('Testing that AssertionError is raised '
+              'with invalid input to ENCODE')
+        print(f'Input provided: {data}')
+        try:
+            huffman_encoding(data)
+        except AssertionError as error:
+            assert isinstance(error, AssertionError)
+            print('TEST PASSED!\n')
+        else:
+            print('FAILED!')
+
+    def test_invalid_data_to_decode(data):
+        print('Testing that AssertionError is raised '
+              'with invalid input to DECODE')
         print(f'Input provided: {data}')
         try:
             huffman_encoding(data)
@@ -181,4 +201,7 @@ if __name__ == "__main__":
 
     invalid_data = [0, None, '']
     for item in invalid_data:
-        test_invalid_data_as_input(item)
+        test_invalid_data_to_encode(item)
+
+    not_a_node_obj = object()
+    test_invalid_data_to_decode(not_a_node_obj)
