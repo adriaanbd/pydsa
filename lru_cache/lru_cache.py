@@ -4,6 +4,7 @@ class Node:
         self.front = None
         self.back = None
 
+
 class LRU_Cache:
     def __init__(self, limit=5):
         assert isinstance(limit, int), 'Limit must be an integer'
@@ -38,7 +39,7 @@ class LRU_Cache:
         self.lru = node
         self.cache[node.key] = node
         self.size += 1
-    
+
     @property
     def full(self):
         return self.limit == self.size
@@ -59,7 +60,8 @@ class LRU_Cache:
             if self.full:
                 self._remove(self.oldest, full=True)
             self._insert(node)
-    
+
+
 if __name__ == "__main__":
     def test_lru_and_oldest_on_insert():
         cache = LRU_Cache(3)
@@ -69,7 +71,7 @@ if __name__ == "__main__":
         cache.set(2, 2)
         assert cache.lru.value == 2, 'LRU item did not update'
         assert cache.oldest.value == 1, 'Oldest item was incorrectly updated'
-    
+
     def test_when_cache_is_full():
         cache = LRU_Cache(3)
         cache.set(1, 1)
@@ -80,18 +82,18 @@ if __name__ == "__main__":
         assert cache.lru.value == 4, 'LRU item was not updated'
 
     def test_multiple_get_and_set():
-        our_cache = LRU_Cache(5)
-        our_cache.set(1, 1);
-        our_cache.set(2, 2);
-        our_cache.set(3, 3);
-        our_cache.set(4, 4);
-        assert our_cache.get(1) == 1      
-        assert our_cache.get(2) == 2      
-        assert our_cache.get(9) == -1     
-        our_cache.set(5, 5) 
-        our_cache.set(6, 6)
-        assert our_cache.get(3) == -1
-    
+        cache = LRU_Cache(5)
+        cache.set(1, 1)
+        cache.set(2, 2)
+        cache.set(3, 3)
+        cache.set(4, 4)
+        assert cache.get(1) == 1
+        assert cache.get(2) == 2
+        assert cache.get(9) == -1
+        cache.set(5, 5)
+        cache.set(6, 6)
+        assert cache.get(3) == -1
+
     def test_assertion_limit():
         try:
             cache = LRU_Cache(0)
