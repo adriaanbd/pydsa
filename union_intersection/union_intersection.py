@@ -10,7 +10,6 @@ class Node:
 class LinkedList:
     def __init__(self, iterable=None):
         self.head = None
-        self.size = 0
         if iterable:
             self._from_iterable(iterable)
 
@@ -25,7 +24,6 @@ class LinkedList:
             node = node.next
 
         node.next = Node(value)
-        self.size += 1
 
     def _from_iterable(self, iterable):
         previous_node = None
