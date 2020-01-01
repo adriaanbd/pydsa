@@ -49,9 +49,10 @@ class LinkedList:
 
 
 def union(llist_1, llist_2):
-    l1 = list(llist_1)
-    l2 = list(llist_2)
-    uniques = set(l1 + l2)
+    s1 = set(llist_1)
+    s2 = set(llist_2)
+
+    uniques = s1.union(s2)
 
     return LinkedList(uniques)
 
