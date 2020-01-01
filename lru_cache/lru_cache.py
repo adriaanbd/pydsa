@@ -55,7 +55,7 @@ class LRU_Cache:
 
     def set(self, *values):
         key, _ = values
-        if self.cache.get(key) is None:
+        if key not in self.cache:
             node = self._make_node(*values)
             if self.full:
                 self._remove(self.oldest, full=True)
