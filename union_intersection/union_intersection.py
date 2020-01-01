@@ -53,17 +53,21 @@ def union(llist_1, llist_2):
     s2 = set(llist_2)
 
     uniques = s1.union(s2)
+    ll_union = LinkedList(uniques)
 
-    return LinkedList(uniques)
+    del uniques, s1, s2
+    return ll_union
 
 
 def intersection(llist_1, llist_2):
-    set_1 = set(llist_1)
-    set_2 = set(llist_2)
+    s1 = set(llist_1)
+    s2 = set(llist_2)
 
-    set_intersection = set_1.intersection(set_2)
+    set_intersection = s1.intersection(s2)
+    ll_intersection = LinkedList(set_intersection)
 
-    return LinkedList(set_intersection)
+    del s1, s2, set_intersection
+    return ll_intersection
 
 
 if __name__ == "__main__":
