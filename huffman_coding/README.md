@@ -15,7 +15,7 @@ The overall time complexity for both encoding and decoding is `O(n log n)`, as d
 Overall time complexity for the encoding process is `O(n log n)`.
 
 * Setting the frequencies take `O(n)`, where `n` represents the number of characters in the data.
-* Building the tree takes takes `O(n log n)`, where n represents the number of items in que `queue`.
+* Building the tree takes takes `O(n log n)`, where n represents the number of items in que `queue`. This process involves inserting and extracting items in a priority queue at `O(n log n)`, given that `priority_queue.put(item)` takes `O(log n)` and likewise each `priority_queue.get()` takes `O(log n)`. Both methods are called for `n` amount of times where `n` represents the number of unique characters in the data.
 * Setting a binary codes mapping from letter to code takes `O(n)` where n represents the number of nodes in the tree.
 * Encoding the message takes `O(n)` where n represents the number of characters in the data.
 
