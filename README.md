@@ -1,8 +1,8 @@
 # PYDSA
 
-PYDSA is an acronym for Python Data Structures and Algorithms. This repository is a collection of my own solutions with time and space complexity analysis of problems found online. It was initially created with the purpose to submit my project for Part II of Udacity's Data Structures and Algorithms Nanodegree, *Show Me The Data Structures*. The course can be found [here]().
+PYDSA is an acronym for Python Data Structures and Algorithms. This repository is a collection of my own solutions with time and space complexity analysis of problems found online. It was initially created with the purpose to submit my project for Part II of Udacity's Data Structures and Algorithms Nanodegree, *Show Me The Data Structures*. The course can be found [here](https://www.udacity.com/course/data-structures-and-algorithms-nanodegree--nd256).
 
-Going forward, I'll be including problems with a practical use case and that I've personally found very entertaining. All problems will attempt to follow the same structure: solution and explanation of the choice made on data structures used and a time/space complexity analysis.
+Going forward, I'll be including problems that are practical and that I've personally found very interesting and entertaining. All problems will attempt to follow the same structure: solution and explanation of the choice made on data structures used and a time/space complexity analysis.
 
 ## Problems
 
