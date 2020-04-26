@@ -4,9 +4,45 @@
 
 ![Cover Image](/imgs/cover2.png?raw=true)
 
-## Problems
+## Built With
 
-The following problems are in this repository:
+- Python 3x
+- Creativity, persistence and patience
+
+## Live Demo
+
+There isn't a live demo for this project/
+
+## Getting Started
+
+### Prerequisites
+
+You need Python 3x installed.
+
+### Setup
+
+```bash
+$ git clone https://github.com/adriaanbd/pydsa.git
+$ cd pydsa
+```
+
+### Run tests
+
+Unit tests are provided within each directory without a testing framework. You can run the tests for each file by running the file.
+
+For instance, running the tests for `active_directory.py`:
+
+```bash
+$ python active_directory/active_directory.py
+True
+True
+True
+True
+```
+
+## Solutions
+
+Solutions to the following algorithms are in this repository:
 
 Name|Description|Link
 ---|---|---
