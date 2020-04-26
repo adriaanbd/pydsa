@@ -7,11 +7,11 @@
 ## Built With
 
 - Python 3x
-- Creativity, persistence and patience
+- Creativity, persistence and patience.
 
 ## Live Demo
 
-There isn't a live demo for this project/
+There isn't a live demo for this project.
 
 ## Getting Started
 
