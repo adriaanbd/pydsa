@@ -57,7 +57,7 @@ Union Intersection|Union and intersection method to be used on a `LinkedList`|Se
 
 ### Adriaan Beiertz
 
-- [GitHub](https://gihub.com/adriaanbd)
+- [GitHub](https://github.com/adriaanbd)
 - [Twitter](https://twitter.com/abeiertz)
 - [LinkedIn](https://linkedin.com/adriaanbd)
 
