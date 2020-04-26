@@ -2,7 +2,7 @@
 
 > Python Data Structures and Algorithms (PYDSA) is a collection of my own solutions with time and space complexity analysis of practical algorithms and data structures.
 
-![Cover Image](/imgs/hero.png?raw=true)
+![Cover Image](/imgs/cover2.png?raw=true)
 
 ## Problems
 
